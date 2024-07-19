@@ -1,0 +1,78 @@
+
+@import "../../sass/variable.scss";
+
+.task{
+  padding: 15px 12px;
+  display: grid;
+  gap: 5px;
+
+  .title{
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 600;
+  }
+
+  .content{
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .priority{
+    color: $green;
+  }
+
+  .buttons{
+    margin-top: 15px;
+    
+    .btn{
+      color: $blue;
+      background-color: transparent;
+      outline: none;
+      border: 0;
+      font-size: 16px;
+      border: 1px solid $blue;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 5px;
+      border-radius: 50%;
+      transition: .3s;
+      cursor: pointer;
+
+      &:hover{
+        color: $white;
+        background-color: $blue;
+      }
+
+
+      &.delete{
+        border-color: $red;
+        color: $red;
+
+        &:hover{
+          color: $white;
+          background-color: $red;
+        }
+      }
+
+      &.edit{
+        border-color: $green;
+        color: $green;
+
+        &:hover{
+          color: $white;
+          background-color: $green;
+        }
+      }
+    }
+  }
+
+  .updation-btn{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 10px;
+    margin-top: 0;
+  }
+}

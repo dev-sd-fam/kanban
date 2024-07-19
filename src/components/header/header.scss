@@ -1,0 +1,36 @@
+// import variales
+@import "../../sass/variable.scss";
+
+.header {
+    background: $blue;
+    color: $white;
+    font-weight: 300;
+    padding: 15px 0;
+}
+
+.navbar .logo {
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.add-task {
+    gap: 5px;
+    background: transparent;
+    border: 1px solid $white;
+    padding: 6px 18px;
+    border-radius: 14px;
+    color: $white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: .3s;
+    outline: none;
+
+    &:hover {
+        background-color: $white;
+        color: $blue;
+    }
+
+    svg {
+        font-size: 20px;
+    }
+}

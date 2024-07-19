@@ -1,0 +1,14 @@
+// import variales
+@import "../../sass/variable.scss";
+
+.footer {
+    background: $blue;
+    color: $white;
+    font-weight: 300;
+    padding: 15px 0;
+}
+
+.footer .logo {
+    cursor: pointer;
+    font-size: 25px;
+}
