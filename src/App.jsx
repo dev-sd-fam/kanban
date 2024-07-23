@@ -1,24 +1,54 @@
-import Header from './components/header/Header'
-
 // styling import
-import "./sass/reset.scss"
+import "./sass/reset.scss";
 import "./sass/global.scss";
-import Footer from './components/footer/Footer';
-import Dashboard from './components/dashboard/Dashboard';
-import TaskManagement from './components/task-managment/TaskManagement';
+
+import Main from "./layout/Main";
+import Home from "./pages/Home";
+import Register from "./components/register/Register";
+import Login from "./components/login/Login";
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { useEffect } from "react";
+import AddTask from "./components/addTask/AddTask";
+import PrivateRoute from "./components/privateRoute/PrivateRoute";
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Main />,
+      errorElement: <Error />,
 
-  return (
-    <>
-      <Header/>
-      <main>
-        <Dashboard/>
-        <TaskManagement/>
-      </main>
-      <Footer/>
-    </>
-  )
+      children: [
+        {
+          index: true,
+          element: (
+            <PrivateRoute>
+              <Home />
+            </PrivateRoute>
+          ),
+          errorElement: <Error />,
+        },
+        {
+          path: "add-task",
+          element: <AddTask />,
+          errorElement: <Error />,
+        },
+        {
+          path: "register",
+          element: <Register />,
+          errorElement: <Error />,
+        },
+        {
+          path: "login",
+          element: <Login />,
+          errorElement: <Error />,
+        },
+      ],
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
 }
 
-export default App
+export default App;

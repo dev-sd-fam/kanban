@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Wrapper from "../wrapper/Wrapper";
 import "./footer.scss";
 
@@ -6,7 +7,9 @@ const Footer = () => {
     <footer className="footer">
       <Wrapper>
         <div className="flex ">
-          <h1 className="logo">KanBan Board</h1>
+          <span className="logo">
+            <Link>KanBan Board</Link>
+          </span>
           <div className="right-container">
             <span>Copyright by &copy; KanBan</span>
           </div>

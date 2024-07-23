@@ -1,0 +1,141 @@
+{
+  "users": [
+    {
+      "id": "70cd",
+      "name": "subodh D",
+      "email": "subodh123@gmail.com",
+      "password": "subodh123",
+      "tasks": [
+        {
+          "id": "d9a8ceb2-550b-4cbe-86e1-f10ab8919467",
+          "taskName": "task1",
+          "deadline": "2024-07-26",
+          "priority": "medium"
+        },
+        {
+          "id": "84cf0317-deca-4b28-a553-8b53b1c1093c",
+          "taskName": "task2",
+          "deadline": "2024-07-28",
+          "priority": "low"
+        },
+        {
+          "id": "e7405e25-31bd-46a6-accc-044f308a60cc",
+          "stage": 0,
+          "taskName": "task3",
+          "deadline": "2024-07-31",
+          "priority": "medium"
+        },
+        {
+          "id": "bd7fdb8a-4a03-4753-8bb4-dccad8ce1f3f",
+          "stage": 0,
+          "taskName": "task4",
+          "deadline": "2024-08-04",
+          "priority": "high"
+        },
+        {
+          "id": "5165678f-ff86-4c3c-9263-19f661df49b0",
+          "stage": 0,
+          "taskName": "task6",
+          "deadline": "2024-08-10",
+          "priority": "low"
+        },
+        {
+          "id": "c1360ecb-0eba-4055-8f28-7369beeceeb0",
+          "stage": 0,
+          "taskName": "task 9",
+          "deadline": "2024-09-02",
+          "priority": "low"
+        }
+      ]
+    },
+    {
+      "id": "3582",
+      "name": "valay",
+      "email": "valay123@gmail.com",
+      "password": "valay123",
+      "tasks": [
+        {
+          "id": "f9e54617-b58a-404b-a89f-d8ad68219c25",
+          "stage": 0,
+          "taskName": "task 10",
+          "deadline": "2024-08-11",
+          "priority": "high"
+        },
+        {
+          "id": "23f0ae04-3aad-42ae-bb91-0363c10783fa",
+          "stage": 0,
+          "taskName": "task11",
+          "deadline": "2024-08-10",
+          "priority": "medium"
+        },
+        {
+          "id": "7467a92a-c80b-47de-878c-fd83a410d67e",
+          "stage": 0,
+          "taskName": "task 12",
+          "deadline": "2024-08-09",
+          "priority": "low"
+        },
+        {
+          "id": "d9720148-fba6-4945-b992-7497502abbd9",
+          "stage": 3,
+          "taskName": "task 13",
+          "deadline": "2024-08-11",
+          "priority": "medium"
+        },
+        {
+          "id": "3defb2e0-22a2-422b-80c5-f68b16c4d005",
+          "stage": 0,
+          "taskName": "add button ",
+          "deadline": "2024-08-09",
+          "priority": "medium"
+        },
+        {
+          "id": "4a662758-c0ad-4682-93dc-c786b432be1b",
+          "stage": 0,
+          "taskName": "navbar implementatio",
+          "deadline": "2024-09-28",
+          "priority": "medium"
+        },
+        {
+          "id": "575119c6-75c4-4f63-9aae-9dfbbb09c741",
+          "stage": 0,
+          "taskName": "create footer",
+          "deadline": "2024-08-02",
+          "priority": "high"
+        },
+        {
+          "id": "ef324bbd-1732-41ca-9d5a-5578dc36b938",
+          "stage": 0,
+          "taskName": "banner section",
+          "deadline": "2024-08-09",
+          "priority": "high"
+        },
+        {
+          "id": "e01386e3-162a-4476-a8e4-da4f57279c01",
+          "stage": 0,
+          "taskName": "slider section",
+          "deadline": "2024-08-09",
+          "priority": "low"
+        },
+        {
+          "id": "8ac532f9-3cf0-42eb-96ec-11355d70ccfe",
+          "stage": 0,
+          "taskName": "Single article section",
+          "deadline": "2024-07-25",
+          "priority": "high"
+        },
+        {
+          "id": "d9fd74a4-128a-412e-bb15-fad88fbdd6c4",
+          "stage": 0,
+          "taskName": "Optimization implement",
+          "deadline": "2024-07-27",
+          "priority": "high"
+        }
+      ]
+    }
+  ],
+  "isLogin": {
+    "isLogin": false,
+    "id": 0
+  }
+}

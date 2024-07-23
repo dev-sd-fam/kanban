@@ -1,0 +1,83 @@
+@import "../../sass/variable.scss";
+
+.sign-up, .sign-in, .add-task-form {
+  margin: 40px 0;
+
+  .heading {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .form-container {
+    width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 35px;
+  }
+
+  label {
+    color: $blue;
+    font-weight: 600;
+  }
+
+  input {
+    width: 100%;
+    padding: 5px 20px 5px 0;
+    border: 0;
+    border-bottom: 1px solid $blue;
+    outline: none;
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .row {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    position: relative;
+
+    .error {
+      position: absolute;
+      color: red;
+      bottom: -20px;
+    }
+  }
+
+  .eye {
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: $blue;
+  }
+
+  .btn{
+    background-color: $blue;
+    color: $white;
+    outline: none;
+    border: 0;
+    padding: 10px 30px;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: .3s;
+
+    &:hover{
+      background-color: rgba($blue, 0.8);
+    }
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  .btn-container{
+    width: 100%;
+  }
+}
