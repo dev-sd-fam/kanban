@@ -22,6 +22,7 @@
     font-size: 18px;
     line-height: 24px;
     font-weight: 600;
+    text-transform: capitalize;
   }
 
   .content {
@@ -84,17 +85,23 @@
     margin-top: 0;
   }
 
-  .priority{
+  .priority {
+    text-transform: capitalize;
+
     &.high {
       color: $red;
     }
-  
+
     &.medium {
       color: $yellow;
     }
-  
+
     &.low {
       color: $green;
     }
+  }
+
+  .hidden {
+    visibility: hidden;
   }
 }

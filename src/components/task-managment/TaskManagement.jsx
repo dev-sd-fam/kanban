@@ -51,7 +51,7 @@ const TaskManagement = () => {
             ) : (
               <ul className="Tasks">
                 {backlog.map((task) => (
-                  <Task task={task} key={task.id} />
+                  <Task task={task} loginId={login} key={task.id} />
                 ))}
               </ul>
             )}
@@ -65,7 +65,7 @@ const TaskManagement = () => {
             ) : (
               <ul className="Tasks">
                 {todo.map((task) => (
-                  <Task task={task} key={task.id} />
+                  <Task task={task} loginId={login} key={task.id} />
                 ))}
               </ul>
             )}
@@ -79,7 +79,7 @@ const TaskManagement = () => {
             ) : (
               <ul className="Tasks">
                 {onGoing.map((task) => (
-                  <Task task={task} key={task.id} />
+                  <Task task={task} loginId={login} key={task.id} />
                 ))}
               </ul>
             )}
@@ -93,7 +93,7 @@ const TaskManagement = () => {
             ) : (
               <ul className="Tasks">
                 {done.map((task) => (
-                  <Task task={task} key={task.id} />
+                  <Task task={task} loginId={login} key={task.id} />
                 ))}
               </ul>
             )}

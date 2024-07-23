@@ -43,6 +43,56 @@ export const addTask = createAsyncThunk(
   }
 );
 
+// update task stage for login user
+export const updateTaskStage = createAsyncThunk(
+  "user/updateTaskStage",
+  async ({ loginId, taskId, newStage}) => {
+    // Fetch the current user data
+    const userResponse = await axios.get(
+      `http://localhost:3000/users/${loginId}`
+    );
+    const user = userResponse.data;
+
+    // Update the user's tasks
+    const updatedTasks = user.tasks.map(task =>
+      task.id === taskId ? { ...task, stage: newStage } : task
+    );
+    console.log(updatedTasks);
+
+    // Send the updated user data back to the server
+    const response = await axios.put(`http://localhost:3000/users/${loginId}`, {
+      ...user,
+      tasks: updatedTasks,
+    });
+
+    return response.data;
+  }
+);
+
+
+// delete task for login user
+export const deleteTask = createAsyncThunk(
+  "user/deleteTask",
+  async ({ loginId, taskId}) => {
+    // Fetch the current user data
+    const userResponse = await axios.get(
+      `http://localhost:3000/users/${loginId}`
+    );
+    const user = userResponse.data;
+
+    // Update the user's tasks
+    const updatedTasks = user.tasks.filter((task)=> task.id !== taskId)
+
+    // Send the updated user data back to the server
+    const response = await axios.put(`http://localhost:3000/users/${loginId}`, {
+      ...user,
+      tasks: updatedTasks
+    });
+
+    return response.data;
+  }
+);
+
 const userSlice = createSlice({
   name: "users",
   initialState,
@@ -74,6 +124,36 @@ const userSlice = createSlice({
         state.loading = false;
       })
       .addCase(addTask.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(updateTaskStage.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(updateTaskStage.fulfilled, (state, action) => {
+        const updatedUser = action.payload;
+        state.users = state.users.map((user) =>
+          user.id === updatedUser.id ? updatedUser : user
+        );
+        state.loading = false;
+      })
+      .addCase(updateTaskStage.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(deleteTask.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(deleteTask.fulfilled, (state, action) => {
+        const updatedUser = action.payload;
+        state.users = state.users.map((user) =>
+          user.id === updatedUser.id ? updatedUser : user
+        );
+        state.loading = false;
+      })
+      .addCase(deleteTask.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });
