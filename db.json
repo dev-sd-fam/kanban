@@ -15,7 +15,7 @@
         },
         {
           "id": "5165678f-ff86-4c3c-9263-19f661df49b0",
-          "stage": 0,
+          "stage": 3,
           "taskName": "Navbar add",
           "deadline": "2025-07-24",
           "priority": "medium"
@@ -29,14 +29,14 @@
         },
         {
           "id": "906726c0-3545-49c4-b666-20b96c7feccb",
-          "stage": 1,
+          "stage": 0,
           "taskName": "Add Navbar with submenu",
           "deadline": "2024-07-28",
           "priority": "high"
         },
         {
           "id": "ec1eeec3-af1d-4f3c-8ae9-1effc7d4ab41",
-          "stage": 3,
+          "stage": 1,
           "taskName": "Add Banner",
           "deadline": "2024-07-19",
           "priority": "medium"
