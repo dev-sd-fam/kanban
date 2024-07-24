@@ -9,7 +9,6 @@ import { updateTaskStage, deleteTask } from "../../features/users/userSlice";
 
 const Task = ({ task, loginId }) => {
   const { taskName, deadline, priority, id, stage } = task;
-  console.log(stage);
   const dispatch = useDispatch();
 
   const handlePrevStage = () => {
@@ -23,38 +22,49 @@ const Task = ({ task, loginId }) => {
   };
 
   const handleTaskDelete = () => {
-    dispatch(deleteTask({loginId, taskId: id}))
-  }
+    let result = confirm(`Do you want to delete ${taskName} task`);
+    if (result === true) {
+      dispatch(deleteTask({ loginId, taskId: id }));
+    }
+  };
+
+  const isPrevHidden = stage === 0;
+  const isNextHidden = stage === 3;
 
   return (
     <li className={`task ${priority}`}>
       <div className="buttons updation-btn">
-        <button className="btn edit" title="edit">
+        <button className="btn edit" title="Edit task">
           <CiEdit />
         </button>
-        <button className="btn delete" title="delete" onClick={handleTaskDelete}>
+        <button
+          className="btn delete"
+          title="Delete task"
+          onClick={handleTaskDelete}
+        >
           <MdDeleteForever />
         </button>
       </div>
       <h3 className="title">{taskName}</h3>
-      <span>{stage}</span>
       <div className="content flex">
         <span className={`priority ${priority}`}>{priority}</span>
         <span className="deadline">{deadline}</span>
       </div>
       <div className="flex buttons">
         <button
-          className={`btn left ${stage == 0 && "hidden"}`}
+          className={`btn left ${isPrevHidden ? "hidden" : ""}`}
           onClick={handlePrevStage}
-          title="prev"
+          title="Previous stage"
+          aria-label="Move to previous stage"
         >
           <FaHandPointLeft />
         </button>
 
         <button
-          className={`btn right ${stage == 3 && "hidden"}`}
+          className={`btn right ${isNextHidden ? "hidden" : ""}`}
           onClick={handleNextStage}
-          title="next"
+          title="Next stage"
+          aria-label="Move to next stage"
         >
           <FaHandPointRight />
         </button>

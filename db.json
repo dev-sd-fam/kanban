@@ -55,43 +55,22 @@
       "password": "valay123",
       "tasks": [
         {
-          "id": "d9720148-fba6-4945-b992-7497502abbd9",
-          "stage": 3,
-          "taskName": "task 13",
-          "deadline": "2024-08-11",
-          "priority": "medium"
-        },
-        {
-          "id": "3defb2e0-22a2-422b-80c5-f68b16c4d005",
-          "stage": 2,
-          "taskName": "add button ",
-          "deadline": "2024-08-09",
-          "priority": "medium"
-        },
-        {
           "id": "4a662758-c0ad-4682-93dc-c786b432be1b",
-          "stage": 0,
+          "stage": 3,
           "taskName": "navbar implementatio",
           "deadline": "2024-09-28",
           "priority": "medium"
         },
         {
-          "id": "575119c6-75c4-4f63-9aae-9dfbbb09c741",
-          "stage": 1,
-          "taskName": "create footer",
-          "deadline": "2024-08-02",
-          "priority": "high"
-        },
-        {
           "id": "ef324bbd-1732-41ca-9d5a-5578dc36b938",
-          "stage": 1,
+          "stage": 3,
           "taskName": "banner section",
           "deadline": "2024-08-09",
           "priority": "high"
         },
         {
           "id": "e01386e3-162a-4476-a8e4-da4f57279c01",
-          "stage": 0,
+          "stage": 1,
           "taskName": "slider section",
           "deadline": "2024-08-09",
           "priority": "low"
@@ -101,13 +80,6 @@
           "stage": 0,
           "taskName": "Single article section",
           "deadline": "2024-07-25",
-          "priority": "high"
-        },
-        {
-          "id": "d9fd74a4-128a-412e-bb15-fad88fbdd6c4",
-          "stage": 0,
-          "taskName": "Optimization implement",
-          "deadline": "2024-07-27",
           "priority": "high"
         }
       ]

@@ -8,88 +8,71 @@ const initialState = {
   error: null,
 };
 
-// fetch login user data
+// Fetch login user data
 export const fetchUsers = createAsyncThunk("user/fetchUsers", async (id) => {
   const response = await axios.get(`http://localhost:3000/users/${id}`);
   return response.data;
 });
 
-// add task for login user
+// Add task for login user
 export const addTask = createAsyncThunk(
   "user/addTask",
   async ({ loginId, values }) => {
-    // Fetch the current user data
     const userResponse = await axios.get(
       `http://localhost:3000/users/${loginId}`
     );
     const user = userResponse.data;
-
-    const newTask = {
-      id: uuidv4(),
-      stage: 0,
-      ...values,
-    };
-
-    // Update the user's tasks
+    const newTask = { id: uuidv4(), stage: 0, ...values };
     const updatedTasks = [...user.tasks, newTask];
-
-    // Send the updated user data back to the server
     const response = await axios.put(`http://localhost:3000/users/${loginId}`, {
       ...user,
       tasks: updatedTasks,
     });
-
-    return response.data;
+    return { loginId, user: response.data };
   }
 );
+
+// Utility function to update tasks
+const updateTasks = (tasks, taskId, updateFn) => {
+  return tasks.map((task) => (task.id === taskId ? updateFn(task) : task));
+};
 
 // update task stage for login user
 export const updateTaskStage = createAsyncThunk(
   "user/updateTaskStage",
-  async ({ loginId, taskId, newStage}) => {
-    // Fetch the current user data
+  async ({ loginId, taskId, newStage }) => {
     const userResponse = await axios.get(
       `http://localhost:3000/users/${loginId}`
     );
     const user = userResponse.data;
 
-    // Update the user's tasks
-    const updatedTasks = user.tasks.map(task =>
-      task.id === taskId ? { ...task, stage: newStage } : task
-    );
-    console.log(updatedTasks);
+    const updatedTasks = updateTasks(user.tasks, taskId, (task) => ({
+      ...task,
+      stage: newStage,
+    }));
 
-    // Send the updated user data back to the server
     const response = await axios.put(`http://localhost:3000/users/${loginId}`, {
       ...user,
       tasks: updatedTasks,
     });
-
-    return response.data;
+    return { loginId, user: response.data };
   }
 );
-
 
 // delete task for login user
 export const deleteTask = createAsyncThunk(
   "user/deleteTask",
-  async ({ loginId, taskId}) => {
-    // Fetch the current user data
+  async ({ loginId, taskId }) => {
     const userResponse = await axios.get(
       `http://localhost:3000/users/${loginId}`
     );
     const user = userResponse.data;
-
-    // Update the user's tasks
-    const updatedTasks = user.tasks.filter((task)=> task.id !== taskId)
-
-    // Send the updated user data back to the server
+    const updatedTasks = user.tasks.filter((task) => task.id !== taskId);
     const response = await axios.put(`http://localhost:3000/users/${loginId}`, {
       ...user,
-      tasks: updatedTasks
+      tasks: updatedTasks,
     });
-
-    return response.data;
+    return { loginId, user: response.data };
   }
 );
 
@@ -111,16 +94,9 @@ const userSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-      .addCase(addTask.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
       .addCase(addTask.fulfilled, (state, action) => {
-        // Find and update the user in the state
-        const updatedUser = action.payload;
-        state.users = state.users.map((user) =>
-          user.id === updatedUser.id ? updatedUser : user
-        );
+        const { loginId, user } = action.payload;
+        state.users = state.users.map((u) => (u.id === loginId ? user : u));
         state.loading = false;
       })
       .addCase(addTask.rejected, (state, action) => {
@@ -132,10 +108,8 @@ const userSlice = createSlice({
         state.error = null;
       })
       .addCase(updateTaskStage.fulfilled, (state, action) => {
-        const updatedUser = action.payload;
-        state.users = state.users.map((user) =>
-          user.id === updatedUser.id ? updatedUser : user
-        );
+        const { loginId, user } = action.payload;
+        state.users = state.users.map((u) => (u.id === loginId ? user : u));
         state.loading = false;
       })
       .addCase(updateTaskStage.rejected, (state, action) => {
@@ -147,10 +121,8 @@ const userSlice = createSlice({
         state.error = null;
       })
       .addCase(deleteTask.fulfilled, (state, action) => {
-        const updatedUser = action.payload;
-        state.users = state.users.map((user) =>
-          user.id === updatedUser.id ? updatedUser : user
-        );
+        const { loginId, user } = action.payload;
+        state.users = state.users.map((u) => (u.id === loginId ? user : u));
         state.loading = false;
       })
       .addCase(deleteTask.rejected, (state, action) => {
