@@ -16,7 +16,6 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (login) {
-      console.log("Fetching user data");
       setLoading(true);
       dispatch(fetchUsers(login))
         .unwrap()

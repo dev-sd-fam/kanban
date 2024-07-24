@@ -6,6 +6,7 @@ import { CiEdit } from "react-icons/ci";
 import { MdDeleteForever } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { updateTaskStage, deleteTask } from "../../features/users/userSlice";
+import { Link } from "react-router-dom";
 
 const Task = ({ task, loginId }) => {
   const { taskName, deadline, priority, id, stage } = task;
@@ -34,9 +35,9 @@ const Task = ({ task, loginId }) => {
   return (
     <li className={`task ${priority}`}>
       <div className="buttons updation-btn">
-        <button className="btn edit" title="Edit task">
+        <Link to={`/update-task/${id}`} className="btn edit" title="Edit task" >
           <CiEdit />
-        </button>
+        </Link>
         <button
           className="btn delete"
           title="Delete task"

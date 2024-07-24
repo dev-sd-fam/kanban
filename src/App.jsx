@@ -11,6 +11,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useEffect } from "react";
 import AddTask from "./components/addTask/AddTask";
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
+import UpdateTask from "./components/updateTask/UpdateTask";
 
 function App() {
   const router = createBrowserRouter([
@@ -32,6 +33,11 @@ function App() {
         {
           path: "add-task",
           element: <AddTask />,
+          errorElement: <Error />,
+        },
+        {
+          path: "update-task/:id",
+          element: <UpdateTask />,
           errorElement: <Error />,
         },
         {

@@ -76,6 +76,36 @@ export const deleteTask = createAsyncThunk(
   }
 );
 
+// update the task
+export const updateTask = createAsyncThunk(
+  "user/updateTask",
+  async ({ loginId, taskId, values }) => {
+    console.log(values);
+    console.log(taskId);
+    // Fetch the current user data
+    const userResponse = await axios.get(
+      `http://localhost:3000/users/${loginId}`
+    );
+    const user = userResponse.data;
+    console.log(user);
+
+    // Update the specific task
+    const updatedTasks = user.tasks.map((task) =>
+      task.id === taskId ? { ...task, ...values } : task
+    );
+    console.log(updatedTasks);
+
+    // Send the updated user data back to the server
+    const response = await axios.put(`http://localhost:3000/users/${loginId}`, {
+      ...user,
+      tasks: updatedTasks,
+    });
+    console.log(response);
+
+    return response.data;
+  }
+);
+
 const userSlice = createSlice({
   name: "users",
   initialState,
@@ -126,6 +156,21 @@ const userSlice = createSlice({
         state.loading = false;
       })
       .addCase(deleteTask.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(updateTask.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(updateTask.fulfilled, (state, action) => {
+        const updatedUser = action.payload;
+        state.users = state.users.map((user) =>
+          user.id === updatedUser.id ? updatedUser : user
+        );
+        state.loading = false;
+      })
+      .addCase(updateTask.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });
