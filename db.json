@@ -61,6 +61,13 @@
           "taskName": "new task",
           "deadline": "2024-08-03",
           "priority": "medium"
+        },
+        {
+          "id": "03ba5ce3-acb8-4f3a-a0bf-50dcf018881f",
+          "stage": 1,
+          "taskName": "Tab functionality update",
+          "deadline": "2025-12-12",
+          "priority": "medium"
         }
       ]
     },
