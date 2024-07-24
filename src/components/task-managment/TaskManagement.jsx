@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DragDropContext } from "react-beautiful-dnd";
-import { fetchUsers, updateTaskStage } from "../../features/users/userSlice";
 import Wrapper from "../wrapper/Wrapper";
 import DroppableArea from "../droppableArea/DroppableArea";
 import { MdPendingActions, MdFileDownloadDone } from "react-icons/md";
 import { LuListTodo } from "react-icons/lu";
 import { FcProcess } from "react-icons/fc";
 import "./taskManagement.scss";
+import { fetchUsers, updateTaskStage } from "../../features/users/userThunks";
 
 const TaskManagement = () => {
   const user = useSelector((state) => state.users[0]);

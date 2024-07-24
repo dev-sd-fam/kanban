@@ -1,12 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import useFetchUser from "../hooks/useFetchUser";
 import Wrapper from "../wrapper/Wrapper";
 import "./dashboard.scss";
 import { useEffect, useMemo, useState } from "react";
-import { fetchUsers } from "../../features/users/userSlice";
+import { fetchUsers } from "../../features/users/userThunks";
 
 const Dashboard = () => {
-  // const { user, loading, error } = useFetchUser();
   const user = useSelector((state) => state.users[0]);
   const login = window.localStorage.getItem("login");
 

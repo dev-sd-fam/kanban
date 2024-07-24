@@ -9,7 +9,7 @@
         {
           "id": "84cf0317-deca-4b28-a553-8b53b1c1093c",
           "taskName": "Add Banner",
-          "stage": 3,
+          "stage": 1,
           "deadline": "2024-07-26",
           "priority": "medium"
         },
@@ -22,14 +22,14 @@
         },
         {
           "id": "c1360ecb-0eba-4055-8f28-7369beeceeb0",
-          "stage": 2,
+          "stage": 3,
           "taskName": "task 9",
           "deadline": "2024-09-02",
           "priority": "low"
         },
         {
           "id": "906726c0-3545-49c4-b666-20b96c7feccb",
-          "stage": 0,
+          "stage": 3,
           "taskName": "Add Navbar with submenu",
           "deadline": "2024-07-28",
           "priority": "high"
@@ -43,10 +43,17 @@
         },
         {
           "id": "9f7677f1-4446-4e3a-9ba3-7cd717d77425",
-          "stage": 1,
+          "stage": 0,
           "taskName": "task 8",
           "deadline": "2024-07-27",
           "priority": "medium"
+        },
+        {
+          "id": "eb225e9a-d3e7-4b23-b426-bde7168fdd91",
+          "stage": 0,
+          "taskName": "Add footer",
+          "deadline": "2024-08-02",
+          "priority": "low"
         }
       ]
     },
@@ -85,6 +92,15 @@
           "priority": "high"
         }
       ]
+    },
+    {
+      "id": "d399",
+      "name": "sid patil",
+      "userName": "sid",
+      "email": "sid@gmail.com",
+      "phoneNumber": "9834567890",
+      "password": "sid123",
+      "tasks": []
     }
   ],
   "isLogin": {

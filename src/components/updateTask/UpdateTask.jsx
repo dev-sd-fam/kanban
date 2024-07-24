@@ -4,10 +4,10 @@ import * as Yup from "yup";
 import { useNavigate, useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useRef } from "react";
-import { updateTask, fetchUsers } from "../../features/users/userSlice";
 import "../register/register.scss";
 import "../addTask/addTask.scss";
 import { Link } from "react-router-dom";
+import { fetchUsers, updateTask } from "../../features/users/userThunks";
 
 const UpdateTask = () => {
   const { id } = useParams();

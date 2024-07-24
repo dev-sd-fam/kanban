@@ -5,9 +5,9 @@ import { FaHandPointLeft, FaHandPointRight } from "react-icons/fa";
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteForever } from "react-icons/md";
 import { useDispatch } from "react-redux";
-import { updateTaskStage, deleteTask } from "../../features/users/userSlice";
 import { Link } from "react-router-dom";
 import { Draggable } from "react-beautiful-dnd";
+import { deleteTask, updateTaskStage } from "../../features/users/userThunks";
 
 const Task = ({ index, task, loginId }) => {
   const { taskName, deadline, priority, id, stage } = task;

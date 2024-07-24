@@ -6,6 +6,8 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+import ReCAPTCHA from "react-google-recaptcha";
+
 // icons
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
@@ -19,6 +21,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [error, setError] = useState(false);
   const [show, setShow] = useState(false);
+  const [recaptchaToken, setRecaptchaToken] = useState(null);
   const login = window.localStorage.getItem("login");
 
   const formik = useFormik({
@@ -35,6 +38,10 @@ const Login = () => {
         .required("Password is Required"),
     }),
     onSubmit: (values, { resetForm }) => {
+      if (!recaptchaToken) {
+        setError(true);
+        return;
+      }
       axios
         .get("http://localhost:3000/users")
         .then((res) => {
@@ -63,13 +70,17 @@ const Login = () => {
     }
   }, [navigate]);
 
+  const handleRecaptchaChange = (token) => {
+    setRecaptchaToken(token);
+  };
+
   return (
     <section className="sign-in">
       <Wrapper>
         <div className="container flex">
           <h2 className="heading">Login</h2>
           {error && (
-            <p className="login-error">Please enter valid Email & password</p>
+            <p className="login-error">Please enter valid Email, password & validate recaptcha</p>
           )}
           <form className="form-container" onSubmit={formik.handleSubmit}>
             <div className="row">
@@ -104,6 +115,12 @@ const Login = () => {
               {formik.touched.password && formik.errors.password ? (
                 <div className="error">{formik.errors.password}</div>
               ) : null}
+            </div>
+            <div className="row">
+              <ReCAPTCHA
+                sitekey="6LcARhcqAAAAAH_sqTgSxuw_ZMLxOlNKZgqVjhP1"
+                onChange={handleRecaptchaChange}
+              />
             </div>
             <div className="btn-container flex">
               <button type="submit" className="login btn">

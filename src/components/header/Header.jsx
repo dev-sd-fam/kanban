@@ -7,7 +7,7 @@ import "./header.scss";
 import { deleteItem } from "../../helper";
 import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchUsers } from "../../features/users/userSlice";
+import { fetchUsers } from "../../features/users/userThunks";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -56,7 +56,7 @@ const Header = () => {
               </button>
               {user && (
                 <div className="flex profile">
-                  <span className="name">{loading ? "loading..." : user.name}</span> <CgProfile />
+                  <span className="name">{loading ? "loading..." : user.userName || user.name}</span> <CgProfile />
                 </div>
               )}
             </div>

@@ -10,7 +10,7 @@ import "../register/register.scss";
 import "./addTask.scss";
 import { Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
-import { addTask } from "../../features/users/userSlice";
+import { addTask } from "../../features/users/userThunks";
 
 const AddTask = () => {
   const navigate = useNavigate();

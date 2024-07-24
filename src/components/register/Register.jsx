@@ -26,7 +26,9 @@ const Register = () => {
   const formik = useFormik({
     initialValues: {
       name: "",
+      userName: "",
       email: "",
+      phoneNumber: "",
       password: "",
     },
     validationSchema: Yup.object({
@@ -36,12 +38,21 @@ const Register = () => {
           "Name must be 2-15 characters long and contain only alphabets"
         )
         .required("Name is Required"),
+      userName: Yup.string()
+        .matches(/^[a-zA-Z0-9]{2,10}$/, "UserName must be 2-10 characters long")
+        .required("Username is Required"),
       email: Yup.string()
         .matches(
           /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
           "Invalid email address"
         )
         .required("Email is Required"),
+      phoneNumber: Yup.string()
+        .matches(
+          /^(?:\+91|91)?[789]\d{9}$/,
+          "Phone number must be a valid 10-digit number"
+        )
+        .required("Phone number is Required"),
       password: Yup.string()
         .min(6, "Password must be at least 6 characters")
         .required("Password is Required"),
@@ -49,11 +60,8 @@ const Register = () => {
     onSubmit: (values, { resetForm }) => {
       // add to the database
       axios
-        .post("http://localhost:3000/users", {...values, tasks: []})
-        .then((res) => {
-          console.log(res);
-          // dispatch to user store
-          // dispatch(addUser(res));
+        .post(`http://localhost:3000/users`, { ...values, tasks: [] })
+        .then(() => {
           resetForm();
           navigate("/login");
         })
@@ -89,6 +97,21 @@ const Register = () => {
               ) : null}
             </div>
             <div className="row">
+              <label htmlFor="userName">Username</label>
+              <input
+                id="userName"
+                name="userName"
+                type="text"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.userName}
+                placeholder="enter username..."
+              />
+              {formik.touched.userName && formik.errors.userName ? (
+                <div className="error">{formik.errors.userName}</div>
+              ) : null}
+            </div>
+            <div className="row">
               <label htmlFor="email">Email Address</label>
               <input
                 id="email"
@@ -101,6 +124,21 @@ const Register = () => {
               />
               {formik.touched.email && formik.errors.email ? (
                 <div className="error">{formik.errors.email}</div>
+              ) : null}
+            </div>
+            <div className="row">
+              <label htmlFor="phoneNumber">Phone Number</label>
+              <input
+                id="phoneNumber"
+                name="phoneNumber"
+                type="text"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.phoneNumber}
+                placeholder="enter phone number..."
+              />
+              {formik.touched.phoneNumber && formik.errors.phoneNumber ? (
+                <div className="error">{formik.errors.phoneNumber}</div>
               ) : null}
             </div>
             <div className="row">

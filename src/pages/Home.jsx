@@ -3,7 +3,7 @@ import Dashboard from "../components/dashboard/Dashboard";
 import TaskManagement from "../components/task-managment/TaskManagement";
 import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUsers } from "../features/users/userSlice";
+import { fetchUsers } from "../features/users/userThunks";
 
 const Home = () => {
   const navigate = useNavigate();
