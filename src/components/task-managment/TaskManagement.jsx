@@ -7,25 +7,13 @@ import { MdPendingActions, MdFileDownloadDone } from "react-icons/md";
 import { LuListTodo } from "react-icons/lu";
 import { FcProcess } from "react-icons/fc";
 import "./taskManagement.scss";
-import { fetchUsers, updateTaskStage } from "../../features/users/userThunks";
+import { updateTaskStage } from "../../features/users/userThunks";
+import useFetchUsers from "../hooks/useFetchUsers";
 
 const TaskManagement = () => {
-  const user = useSelector((state) => state.users[0]);
   const login = window.localStorage.getItem("login");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { user, loading, error } = useFetchUsers(login);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    // check if login then fetch users
-    if (login) {
-      setLoading(true);
-      dispatch(fetchUsers(login))
-        .unwrap()
-        .catch((err) => setError(err.message))
-        .finally(() => setLoading(false));
-    }
-  }, [login, dispatch]);
 
   // filter base on stage
   const task = useMemo(() => user?.tasks ?? [], [user]);

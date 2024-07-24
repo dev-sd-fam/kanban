@@ -1,26 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
 import Wrapper from "../wrapper/Wrapper";
 import "./dashboard.scss";
-import { useEffect, useMemo, useState } from "react";
-import { fetchUsers } from "../../features/users/userThunks";
+import { useMemo } from "react";
+import useFetchUsers from "../hooks/useFetchUsers";
 
 const Dashboard = () => {
-  const user = useSelector((state) => state.users[0]);
   const login = window.localStorage.getItem("login");
-
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (login) {
-      setLoading(true);
-      dispatch(fetchUsers(login))
-        .unwrap()
-        .catch((err) => setError(err.message))
-        .finally(() => setLoading(false));
-    }
-  }, [login, dispatch]);
+  const { user, loading, error } = useFetchUsers(login);
 
   const tasks = useMemo(() => user?.tasks ?? [], [user]);
 

@@ -8,10 +8,10 @@ import Register from "./components/register/Register";
 import Login from "./components/login/Login";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { useEffect } from "react";
 import AddTask from "./components/addTask/AddTask";
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
 import UpdateTask from "./components/updateTask/UpdateTask";
+import Error from "./pages/Error";
 
 function App() {
   const router = createBrowserRouter([
@@ -19,7 +19,6 @@ function App() {
       path: "/",
       element: <Main />,
       errorElement: <Error />,
-
       children: [
         {
           index: true,
@@ -28,27 +27,30 @@ function App() {
               <Home />
             </PrivateRoute>
           ),
-          errorElement: <Error />,
         },
         {
           path: "add-task",
-          element: <AddTask />,
-          errorElement: <Error />,
+          element: (
+            <PrivateRoute>
+              <AddTask />
+            </PrivateRoute>
+          ),
         },
         {
           path: "update-task/:id",
-          element: <UpdateTask />,
-          errorElement: <Error />,
+          element: (
+            <PrivateRoute>
+              <UpdateTask />
+            </PrivateRoute>
+          ),
         },
         {
           path: "register",
           element: <Register />,
-          errorElement: <Error />,
         },
         {
           path: "login",
           element: <Login />,
-          errorElement: <Error />,
         },
       ],
     },

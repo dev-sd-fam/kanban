@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router";
@@ -21,7 +20,11 @@ const Register = () => {
   const [show, setShow] = useState(false);
   const login = window.localStorage.getItem("login");
 
-  const dispatch = useDispatch();
+  useEffect(() => {
+    if (login) {
+      navigate("/");
+    }
+  }, [navigate]);
 
   const formik = useFormik({
     initialValues: {
@@ -68,12 +71,6 @@ const Register = () => {
         .catch((err) => console.log(err));
     },
   });
-
-  useEffect(() => {
-    if (login) {
-      navigate("/");
-    }
-  }, [navigate]);
 
   return (
     <section className="sign-up">

@@ -2,33 +2,28 @@ import Wrapper from "../wrapper/Wrapper";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate, useParams } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useEffect, useRef } from "react";
 import "../register/register.scss";
 import "../addTask/addTask.scss";
 import { Link } from "react-router-dom";
-import { fetchUsers, updateTask } from "../../features/users/userThunks";
+import { updateTask } from "../../features/users/userThunks";
+import useFetchUsers from "../hooks/useFetchUsers";
 
 const UpdateTask = () => {
   const { id } = useParams();
   const login = window.localStorage.getItem("login");
+  const { user, loading, error } = useFetchUsers(login);
+
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (login) {
-      dispatch(fetchUsers(login));
-    }
-  }, [dispatch, login]);
-
-  const user = useSelector((state) => state.users[0]);
   const task = user?.tasks.find((task) => task.id === id);
-  // console.log(task);
 
   const navigate = useNavigate();
   const focusRef = useRef();
 
   const formik = useFormik({
-    enableReinitialize: true, // This is important to update form values when the task is fetched
+    enableReinitialize: true,
     initialValues: {
       taskName: task?.taskName || "",
       deadline: task?.deadline || "",
@@ -43,7 +38,7 @@ const UpdateTask = () => {
       priority: Yup.string().required("Priority is required"),
     }),
     onSubmit: (values, { resetForm }) => {
-      dispatch(updateTask({ loginId: login,taskId: id, values }))
+      dispatch(updateTask({ loginId: login, taskId: id, values }))
         .unwrap()
         .then(() => {
           resetForm();

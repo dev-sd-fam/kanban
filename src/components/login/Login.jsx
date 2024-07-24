@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
 import ReCAPTCHA from "react-google-recaptcha";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-// icons
-import { FaEye } from "react-icons/fa";
-import { FaEyeSlash } from "react-icons/fa";
-
-// style
 import "../register/register.scss";
 import "./login.scss";
 import Wrapper from "../wrapper/Wrapper";
@@ -20,9 +14,19 @@ import Wrapper from "../wrapper/Wrapper";
 const Login = () => {
   const navigate = useNavigate();
   const [error, setError] = useState(false);
-  const [show, setShow] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [recaptchaToken, setRecaptchaToken] = useState(null);
   const login = window.localStorage.getItem("login");
+
+  useEffect(() => {
+    if (login) {
+      navigate("/");
+    }
+  }, [login, navigate]);
+
+  const handleRecaptchaChange = (token) => {
+    setRecaptchaToken(token);
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -64,23 +68,15 @@ const Login = () => {
     },
   });
 
-  useEffect(() => {
-    if (login) {
-      navigate("/");
-    }
-  }, [navigate]);
-
-  const handleRecaptchaChange = (token) => {
-    setRecaptchaToken(token);
-  };
-
   return (
     <section className="sign-in">
       <Wrapper>
         <div className="container flex">
           <h2 className="heading">Login</h2>
           {error && (
-            <p className="login-error">Please enter valid Email, password & validate recaptcha</p>
+            <p className="login-error">
+              Please enter valid Email, password & validate recaptcha
+            </p>
           )}
           <form className="form-container" onSubmit={formik.handleSubmit}>
             <div className="row">
@@ -92,7 +88,7 @@ const Login = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.email}
-                placeholder="enter email..."
+                placeholder="Enter email..."
               />
               {formik.touched.email && formik.errors.email ? (
                 <div className="error">{formik.errors.email}</div>
@@ -103,14 +99,17 @@ const Login = () => {
               <input
                 id="password"
                 name="password"
-                type={show ? "text" : "password"}
+                type={showPassword ? "text" : "password"}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.password}
-                placeholder="enter password...."
+                placeholder="Enter password..."
               />
-              <span className="eye" onClick={() => setShow(!show)}>
-                {show ? <FaEyeSlash /> : <FaEye />}
+              <span
+                className="eye"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
               </span>
               {formik.touched.password && formik.errors.password ? (
                 <div className="error">{formik.errors.password}</div>
@@ -127,12 +126,9 @@ const Login = () => {
                 Login
               </button>
               <span>
-                Didn' have account ? <Link to="/register">Signup</Link>
+                Didn't have an account? <Link to="/register">Signup</Link>
               </span>
             </div>
-
-            {/* {loading && <p>Loading...</p>}
-        {error && <p>{error}</p>} */}
           </form>
         </div>
       </Wrapper>
