@@ -8,7 +8,7 @@ const Footer = () => {
       <Wrapper>
         <div className="flex ">
           <span className="logo">
-            <Link>KanBan Board</Link>
+            <Link>KanBan</Link>
           </span>
           <div className="right-container">
             <span>Copyright by &copy; KanBan</span>

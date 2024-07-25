@@ -1,6 +1,11 @@
 @import "../../sass/variable.scss";
 
 .sign-in{
+
+  .row div div div{
+    width: 100% !important;
+    max-width: 300px;
+  }
   .login-error{
     background: rgba($red, 0.7);
     width: 500px;

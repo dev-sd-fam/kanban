@@ -1,11 +1,22 @@
 @import "./variable.scss";
+@import "./responsive.scss";
+
+* {
+  box-sizing: border-box;
+}
 
 body {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 main {
   min-height: calc(100vh - 119px);
+
+  @include tablet {
+    min-height: calc(100vh - 159px);
+  }
 }
 
 a {
@@ -162,4 +173,11 @@ a {
     box-shadow: 30px 0 0 $blue;
     margin-top: 0;
   }
+}
+
+.load {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

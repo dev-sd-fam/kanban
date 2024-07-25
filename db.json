@@ -9,27 +9,27 @@
         {
           "id": "84cf0317-deca-4b28-a553-8b53b1c1093c",
           "taskName": "Add Banner",
-          "stage": 0,
+          "stage": 1,
           "deadline": "2024-07-26",
           "priority": "medium"
         },
         {
           "id": "5165678f-ff86-4c3c-9263-19f661df49b0",
-          "stage": 0,
-          "taskName": "Navbar add",
+          "stage": 1,
+          "taskName": "Navbar add3",
           "deadline": "2025-07-24",
-          "priority": "medium"
+          "priority": "low"
         },
         {
           "id": "c1360ecb-0eba-4055-8f28-7369beeceeb0",
-          "stage": 3,
-          "taskName": "Add article section",
+          "stage": 0,
+          "taskName": "Add article sections",
           "deadline": "2024-09-02",
           "priority": "high"
         },
         {
           "id": "906726c0-3545-49c4-b666-20b96c7feccb",
-          "stage": 1,
+          "stage": 0,
           "taskName": "Add Navbar with submenu",
           "deadline": "2024-07-28",
           "priority": "high"
@@ -42,31 +42,31 @@
           "priority": "medium"
         },
         {
-          "id": "9f7677f1-4446-4e3a-9ba3-7cd717d77425",
-          "stage": 2,
-          "taskName": "new task 8 updated",
-          "deadline": "2024-10-11",
-          "priority": "medium"
-        },
-        {
           "id": "eb225e9a-d3e7-4b23-b426-bde7168fdd91",
-          "stage": 2,
+          "stage": 3,
           "taskName": "Add footer",
           "deadline": "2024-08-02",
           "priority": "low"
-        },
-        {
-          "id": "b25b5dfe-0c77-41d2-8d82-ab3e1a15f407",
-          "stage": 3,
-          "taskName": "new task",
-          "deadline": "2024-08-03",
-          "priority": "medium"
         },
         {
           "id": "03ba5ce3-acb8-4f3a-a0bf-50dcf018881f",
           "stage": 1,
           "taskName": "Tab functionality update",
           "deadline": "2025-12-12",
+          "priority": "medium"
+        },
+        {
+          "id": "ebee78c7-d250-49a3-ae07-fa9126fb3ae3",
+          "stage": 0,
+          "taskName": "new",
+          "deadline": "2024-08-02",
+          "priority": "medium"
+        },
+        {
+          "id": "8b3e658b-d332-4d41-b0f3-52a8c0a791e7",
+          "stage": 3,
+          "taskName": "Add feature article sections",
+          "deadline": "2024-07-25",
           "priority": "medium"
         }
       ]
@@ -114,6 +114,32 @@
       "email": "sid@gmail.com",
       "phoneNumber": "9834567890",
       "password": "sid123",
+      "tasks": []
+    },
+    {
+      "id": "0bba",
+      "name": "agent",
+      "userName": "agent1",
+      "email": "agent@gmail.com",
+      "phoneNumber": "7812782178",
+      "password": "agent123",
+      "tasks": [
+        {
+          "id": "941a242e-d0ab-4dad-8054-e61580d5b3b9",
+          "stage": 3,
+          "taskName": "task1",
+          "deadline": "2023-12-12",
+          "priority": "medium"
+        }
+      ]
+    },
+    {
+      "id": "89ed",
+      "name": "jon",
+      "userName": "jon",
+      "email": "jon@email.com",
+      "phoneNumber": "9834567892",
+      "password": "jon123",
       "tasks": []
     }
   ],

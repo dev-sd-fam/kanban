@@ -1,4 +1,5 @@
 @import "../../sass/variable.scss";
+@import "../../sass/responsive.scss";
 
 .grid {
   display: grid;
@@ -7,6 +8,11 @@
   text-align: center;
   gap: 20px;
   margin-top: 30px;
+
+  @include tablet-portrait{
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
 
   li {
     padding: 20px 10px;

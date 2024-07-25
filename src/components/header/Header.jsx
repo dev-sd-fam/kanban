@@ -25,19 +25,19 @@ const Header = () => {
       <Wrapper>
         <div className="navbar flex">
           <h1 className="logo">
-            <Link to="/">KanBan Board</Link>
+            <Link to="/">KanBan</Link>
           </h1>
           {login && (
             <div className="right-container flex">
               <Link to="/add-task" className="add-task flex">
-                Add Task <IoIosAddCircleOutline />
+                <span className="text">Add Task</span> <IoIosAddCircleOutline />
               </Link>
               <button className="logout flex" onClick={handleLogout}>
-                Logout <AiOutlineLogout />
+                <span className="text">Logout</span> <AiOutlineLogout />
               </button>
               {user && (
                 <div className="flex profile">
-                  <span className="name">{user.userName || user.name}</span>{" "}
+                  <span className="name text">{user.userName || user.name}</span>{" "}
                   <CgProfile />
                 </div>
               )}

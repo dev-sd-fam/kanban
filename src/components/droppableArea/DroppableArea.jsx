@@ -3,6 +3,7 @@ import { Droppable } from "react-beautiful-dnd";
 import Task from "../task/Task";
 
 const DroppableArea = ({ droppableId, title, icon, tasks, login }) => {
+  console.log(tasks);
   return (
     <Droppable droppableId={droppableId.toString()}>
       {(provided) => (
@@ -14,12 +15,23 @@ const DroppableArea = ({ droppableId, title, icon, tasks, login }) => {
           <h3 className="heading">
             {icon} {title}
           </h3>
-          <ul className="tasks">
-            {tasks.map((task, index) => (
-              <Task index={index} task={task} loginId={login} key={task.id} />
-            ))}
-          </ul>
-          {provided.placeholder}
+          {tasks.length > 0 ? (
+            <>
+              <ul className="tasks">
+                {tasks.map((task, index) => (
+                  <Task
+                    index={index}
+                    task={task}
+                    loginId={login}
+                    key={task.id}
+                  />
+                ))}
+              </ul>
+              {provided.placeholder}
+            </>
+          ) : (
+            <span className="empty">No Task added in {title} stage...</span>
+          )}
         </div>
       )}
     </Droppable>

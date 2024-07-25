@@ -1,30 +1,39 @@
-// styling import
+import React, { Suspense } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./sass/reset.scss";
 import "./sass/global.scss";
-
-import Main from "./layout/Main";
-import Home from "./pages/Home";
-import Register from "./components/register/Register";
-import Login from "./components/login/Login";
-
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import AddTask from "./components/addTask/AddTask";
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
-import UpdateTask from "./components/updateTask/UpdateTask";
 import Error from "./pages/Error";
+import Loader from "./components/loader/Loader";
+
+// Lazy load components
+const Main = React.lazy(() => import("./layout/Main"));
+const Home = React.lazy(() => import("./pages/Home"));
+const Register = React.lazy(() => import("./components/register/Register"));
+const Login = React.lazy(() => import("./components/login/Login"));
+const AddTask = React.lazy(() => import("./components/addTask/AddTask"));
+const UpdateTask = React.lazy(() =>
+  import("./components/updateTask/UpdateTask")
+);
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Main />,
+      element: (
+        <Suspense fallback={<Loader />}>
+          <Main />
+        </Suspense>
+      ),
       errorElement: <Error />,
       children: [
         {
           index: true,
           element: (
             <PrivateRoute>
-              <Home />
+              <Suspense fallback={<Loader />}>
+                <Home />
+              </Suspense>
             </PrivateRoute>
           ),
         },
@@ -32,7 +41,9 @@ function App() {
           path: "add-task",
           element: (
             <PrivateRoute>
-              <AddTask />
+              <Suspense fallback={<Loader />}>
+                <AddTask />
+              </Suspense>
             </PrivateRoute>
           ),
         },
@@ -40,17 +51,27 @@ function App() {
           path: "update-task/:id",
           element: (
             <PrivateRoute>
-              <UpdateTask />
+              <Suspense fallback={<Loader />}>
+                <UpdateTask />
+              </Suspense>
             </PrivateRoute>
           ),
         },
         {
           path: "register",
-          element: <Register />,
+          element: (
+            <Suspense fallback={<Loader />}>
+              <Register />
+            </Suspense>
+          ),
         },
         {
           path: "login",
-          element: <Login />,
+          element: (
+            <Suspense fallback={<Loader />}>
+              <Login />
+            </Suspense>
+          ),
         },
       ],
     },

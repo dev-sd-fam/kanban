@@ -55,7 +55,7 @@ const AddTask = () => {
   return (
     <section className="add-task-form">
       <Wrapper>
-        <div className="container">
+        <div className="container flex">
           <h3 className="heading">Add Task</h3>
           <form onSubmit={formik.handleSubmit} className="form-container">
             <div className="row">
@@ -70,8 +70,8 @@ const AddTask = () => {
                 placeholder="enter task name..."
                 ref={focusRef}
               />
-              {formik.touched.name && formik.errors.name ? (
-                <div className="error">{formik.errors.name}</div>
+              {formik.touched.taskName && formik.errors.taskName ? (
+                <div className="error">{formik.errors.taskName}</div>
               ) : null}
             </div>
             <div className="row">

@@ -1,13 +1,20 @@
 @import "../../sass/variable.scss";
+@import "../../sass/responsive.scss";
 
 .sign-up, .sign-in, .add-task-form {
   margin: 40px 0;
+  
 
   .heading {
     font-size: 36px;
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     text-align: center;
+    color: $blue;
+
+    @include tablet-portrait{
+      font-size: 28px;
+    }
   }
 
   .form-container {
@@ -17,6 +24,15 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 35px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    padding: 30px;
+    border-radius: 7px;
+
+    @include tablet {
+      max-width: 500px;
+      width: 100%;
+      padding: 25px 15px;
+    }
   }
 
   label {
@@ -32,6 +48,7 @@
     outline: none;
     font-size: 18px;
     line-height: 24px;
+    box-sizing: border-box;
   }
 
   .row {
@@ -79,5 +96,10 @@
 
   .btn-container{
     width: 100%;
+
+    @include tablet-portrait{
+      flex-direction: column;
+      gap: 10px;
+    }
   }
 }

@@ -1,4 +1,5 @@
 @import "../../sass/variable.scss";
+@import "../../sass/responsive.scss";
 
 .task-management{
   margin: 35px 0;
@@ -8,6 +9,15 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 15px;
 
+    @include tablet{
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    @include tablet-portrait{
+      grid-template-columns: 1fr;
+    }
+
     .box{
       box-shadow: rgba(49, 78, 207, 0.2) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
       padding: 20px 10px;
@@ -16,22 +26,31 @@
   }
 
   .heading{
-    margin-bottom: 20px;
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 22px;
+    font-weight: 700;
     display: flex;
     align-items: center;
     gap: 5px;
+    color: $blue;
   }
 
   .tasks{
     display: grid;
     gap: 15px;
+    margin-top: 30px;
     
     .task {
       border-radius: 5px;
       background-color: $white;
       box-shadow: rgba(49, 78, 207, 0.2) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
     }
+  }
+
+  .empty{
+    margin-top: 30px;
+    display: block;
+    font-size: 18px;
+    line-height: 28px;
+    color: #b1b1b1;
   }
 }

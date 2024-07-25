@@ -37,12 +37,12 @@ const Register = () => {
     validationSchema: Yup.object({
       name: Yup.string()
         .matches(
-          /^(?!.* {3})[a-zA-Z ]{2,15}$/,
-          "Name must be 2-15 characters long and contain only alphabets"
+          /^(?!.* {3})[a-zA-Z ]{2,20}$/,
+          "Name must be 2-20 characters long"
         )
         .required("Name is Required"),
       userName: Yup.string()
-        .matches(/^[a-zA-Z0-9]{2,10}$/, "UserName must be 2-10 characters long")
+        .matches(/^[a-zA-Z0-9]{2,10}$/, "UserName must be 2-10 characters")
         .required("Username is Required"),
       email: Yup.string()
         .matches(
@@ -53,11 +53,11 @@ const Register = () => {
       phoneNumber: Yup.string()
         .matches(
           /^(?:\+91|91)?[789]\d{9}$/,
-          "Phone number must be a valid 10-digit number"
+          "It must be a valid 10-digit number"
         )
         .required("Phone number is Required"),
       password: Yup.string()
-        .min(6, "Password must be at least 6 characters")
+        .min(6, "Password must be at least 6 char")
         .required("Password is Required"),
     }),
     onSubmit: (values, { resetForm }) => {

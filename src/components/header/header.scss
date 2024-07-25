@@ -1,54 +1,78 @@
 // import variales
 @import "../../sass/variable.scss";
+@import "../../sass/responsive.scss";
 
 .header {
   background: $blue;
   color: $white;
   font-weight: 300;
   padding: 20px 0;
-}
 
-.navbar .logo a {
-  color: $white;
-  cursor: pointer;
-  font-size: 25px;
-}
-
-.right-container {
-  gap: 20px;
-}
-
-.name {
-  font-weight: 700;
-  margin-right: 7px;
-  font-size: 20px;
-  line-height: 26px;
-}
-
-.profile svg{
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.add-task,
-.logout {
-  gap: 5px;
-  background: transparent;
-  border: 1px solid $white;
-  padding: 6px 18px;
-  border-radius: 14px;
-  color: $white;
-  cursor: pointer;
-  font-size: 16px;
-  transition: .3s;
-  outline: none;
-
-  &:hover {
-    background-color: $white;
-    color: $blue;
+  .navbar .logo a {
+    color: $white;
+    cursor: pointer;
+    font-size: 25px;
   }
 
-  svg {
+  .right-container {
+    gap: 20px;
+
+    @include tablet {
+      gap: 20px;
+    }
+  }
+
+  .name {
+    font-weight: 600;
+    margin-right: 7px;
     font-size: 20px;
+    line-height: 26px;
+  }
+
+  .profile svg {
+    font-size: 20px;
+    cursor: pointer;
+
+    @include tablet {
+      font-size: 26px;
+    }
+  }
+
+  .add-task,
+  .logout {
+    gap: 5px;
+    background: transparent;
+    border: 1px solid $white;
+    padding: 6px 18px;
+    border-radius: 14px;
+    color: $white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: .3s;
+    outline: none;
+
+    @include tablet {
+      padding: 0;
+      border: none;
+    }
+
+    &:hover {
+      background-color: $white;
+      color: $blue;
+    }
+
+    svg {
+      font-size: 20px;
+
+      @include tablet {
+        font-size: 26px;
+      }
+    }
+  }
+
+  .text {
+    @include tablet {
+      display: none;
+    }
   }
 }
