@@ -35,7 +35,10 @@ const Login = () => {
     },
     validationSchema: Yup.object({
       email: Yup.string()
-        .email("Invalid email address")
+        .matches(
+          /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+          "Invalid email address"
+        )
         .required("Email is Required"),
       password: Yup.string()
         .min(6, "Password must be at least 6 characters")
