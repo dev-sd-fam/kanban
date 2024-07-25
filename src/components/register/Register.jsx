@@ -5,8 +5,6 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-// import { addUser } from "../../features/users/userSlice";
-
 // icons
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
@@ -21,6 +19,7 @@ const Register = () => {
   const login = window.localStorage.getItem("login");
 
   useEffect(() => {
+    // if login then navigate to home
     if (login) {
       navigate("/");
     }

@@ -3,7 +3,6 @@ import { Droppable } from "react-beautiful-dnd";
 import Task from "../task/Task";
 
 const DroppableArea = ({ droppableId, title, icon, tasks, login }) => {
-  console.log(tasks);
   return (
     <Droppable droppableId={droppableId.toString()}>
       {(provided) => (

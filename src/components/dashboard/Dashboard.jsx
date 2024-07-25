@@ -1,7 +1,11 @@
 import Wrapper from "../wrapper/Wrapper";
-import "./dashboard.scss";
 import { useMemo } from "react";
+
+// fetch user hook
 import useFetchUsers from "../hooks/useFetchUsers";
+
+// style
+import "./dashboard.scss";
 
 const Dashboard = () => {
   const login = window.localStorage.getItem("login");
@@ -9,6 +13,7 @@ const Dashboard = () => {
 
   const tasks = useMemo(() => user?.tasks ?? [], [user]);
 
+  // store tasks data in variables
   const createdTask = tasks.length;
   const completedTask = tasks.filter((task) => task.stage === 3).length;
   const pendingTask = tasks.filter((task) =>

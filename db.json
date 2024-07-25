@@ -9,13 +9,13 @@
         {
           "id": "84cf0317-deca-4b28-a553-8b53b1c1093c",
           "taskName": "Add Banner",
-          "stage": 1,
+          "stage": 2,
           "deadline": "2024-07-26",
           "priority": "medium"
         },
         {
           "id": "5165678f-ff86-4c3c-9263-19f661df49b0",
-          "stage": 1,
+          "stage": 2,
           "taskName": "Navbar add3",
           "deadline": "2025-07-24",
           "priority": "low"
@@ -36,7 +36,7 @@
         },
         {
           "id": "ec1eeec3-af1d-4f3c-8ae9-1effc7d4ab41",
-          "stage": 3,
+          "stage": 2,
           "taskName": "Add Banner",
           "deadline": "2024-07-19",
           "priority": "medium"
@@ -51,9 +51,9 @@
         {
           "id": "03ba5ce3-acb8-4f3a-a0bf-50dcf018881f",
           "stage": 1,
-          "taskName": "Tab functionality update",
+          "taskName": "Tab functionality",
           "deadline": "2025-12-12",
-          "priority": "medium"
+          "priority": "high"
         },
         {
           "id": "ebee78c7-d250-49a3-ae07-fa9126fb3ae3",

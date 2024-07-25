@@ -1,33 +1,42 @@
-import React, { useEffect, useState, useMemo } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { DragDropContext } from "react-beautiful-dnd";
+// hooks
+import React, { useMemo } from "react";
+import { useDispatch } from "react-redux";
 import Wrapper from "../wrapper/Wrapper";
-import DroppableArea from "../droppableArea/DroppableArea";
+
+// icons
 import { MdPendingActions, MdFileDownloadDone } from "react-icons/md";
 import { LuListTodo } from "react-icons/lu";
 import { FcProcess } from "react-icons/fc";
-import "./taskManagement.scss";
+
+// redux fetch & update user 
 import { updateTaskStage } from "../../features/users/userThunks";
 import useFetchUsers from "../hooks/useFetchUsers";
+
+// d&d
+import { DragDropContext } from "react-beautiful-dnd";
+import DroppableArea from "../droppableArea/DroppableArea";
+
+// styles
+import "./taskManagement.scss";
 
 const TaskManagement = () => {
   const login = window.localStorage.getItem("login");
   const { user, loading, error } = useFetchUsers(login);
   const dispatch = useDispatch();
 
-  // filter base on stage
   const task = useMemo(() => user?.tasks ?? [], [user]);
-
-  const backlog = useMemo(
+  
+  // filter base on stage
+  const backlog = useMemo( //backlog
     () => task.filter((task) => task.stage === 0),
     [task]
   );
-  const todo = useMemo(() => task.filter((task) => task.stage === 1), [task]);
-  const onGoing = useMemo(
+  const todo = useMemo(() => task.filter((task) => task.stage === 1), [task]); //todo
+  const onGoing = useMemo( //ongoing
     () => task.filter((task) => task.stage === 2),
     [task]
   );
-  const done = useMemo(() => task.filter((task) => task.stage === 3), [task]);
+  const done = useMemo(() => task.filter((task) => task.stage === 3), [task]); //done
 
   // on drag & drop update stage
   const onDragEnd = (result) => {
@@ -49,7 +58,7 @@ const TaskManagement = () => {
       updateTaskStage({
         loginId: login,
         taskId: draggedTask.id,
-        newStage: parseInt(destination.droppableId, 10),
+        newStage: parseInt(destination.droppableId),
       })
     );
   };

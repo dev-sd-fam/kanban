@@ -4,12 +4,11 @@ import * as Yup from "yup";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import ReCAPTCHA from "react-google-recaptcha";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-
+import Wrapper from "../wrapper/Wrapper";
+import ReCAPTCHA from "react-google-recaptcha";
 import "../register/register.scss";
 import "./login.scss";
-import Wrapper from "../wrapper/Wrapper";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,6 +18,7 @@ const Login = () => {
   const login = window.localStorage.getItem("login");
 
   useEffect(() => {
+    // if login then navigate to home
     if (login) {
       navigate("/");
     }
@@ -34,6 +34,7 @@ const Login = () => {
       password: "",
     },
     validationSchema: Yup.object({
+      // fields validation
       email: Yup.string()
         .matches(
           /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -46,13 +47,14 @@ const Login = () => {
     }),
     onSubmit: (values, { resetForm }) => {
       if (!recaptchaToken) {
+        // after submit if recaptch not validate then return
         setError(true);
         return;
       }
       axios
         .get("http://localhost:3000/users")
         .then((res) => {
-          // check user is already register or not
+          // check user is register or not
           const success = res.data.find(
             (el) => el.email === values.email && el.password === values.password
           );
@@ -67,7 +69,6 @@ const Login = () => {
         })
         .catch((err) => console.log(err));
 
-      // dispatch(loginUser(values));
     },
   });
 

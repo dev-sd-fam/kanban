@@ -1,10 +1,15 @@
 import React, { Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+// page
+import Error from "./pages/Error";
+
+// components
+import PrivateRoute from "./components/privateRoute/PrivateRoute";
+import Loader from "./components/loader/Loader";
+
+// styles
 import "./sass/reset.scss";
 import "./sass/global.scss";
-import PrivateRoute from "./components/privateRoute/PrivateRoute";
-import Error from "./pages/Error";
-import Loader from "./components/loader/Loader";
 
 // Lazy load components
 const Main = React.lazy(() => import("./layout/Main"));
